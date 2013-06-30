@@ -1,6 +1,12 @@
 /* Simple code to extract some quiz questions and answers.
  * Comments added liberally to aid readers who are new to Java or to programming
  * 
+ * To use this program:
+ * Copy and paste your questions and solutions into a text file and save. Put ! on its own line to separate each question.
+ * Run program and navigate to your file and select it. Program will automatically run and generate two new files: 
+ * A list of questions and an answer key.
+ * 
+ * 
  * Imports
  * IO imports file input/output for reading and writing.
  * Scanner is used to read command line if file selector option fails.
