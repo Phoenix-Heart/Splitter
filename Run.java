@@ -83,9 +83,6 @@ public class Run {
 			    String line = "";
 			    int w1 = 0,w2 = 0;
 			    int qNum = 1;
-			    boolean nextq = true;
-			    int quiz = 1;
-			    boolean ansdone = false;
 			    
 			    // read in one line at a time until we reach the end of the file
 			    while ((line = reader.readLine()) != null) {
@@ -106,9 +103,8 @@ public class Run {
 				    		// write the line and start a new one: exclude the # tag
 				    		writer.write(line.substring(1));
 				    		writer.newLine();
-				    	}// remove hash and write the questions
-				    	else {
-				    		ansdone = true;			// lets program know that the current question will be finished once we reach new #
+				    	}	// write to the answer key if the line has none of the tags to indicate a new problem
+				    	else if(line.charAt(0)!='!'&&!line.startsWith("Quiz")&&!line.startsWith("Problem")) {
 				    		// count the number of lines being written to the file
 				    		w2++;
 				    		// write the line and start a new one
@@ -116,22 +112,34 @@ public class Run {
 				    		awriter.newLine();
 				    	}	// write the answers
 				    	
-				    	//recognize a new question if the line starts with 'Quiz' or '!'
-				    	if((line.startsWith("Quiz")||line.startsWith("!"))) {
+				    	//recognize a new question if the line starts with 'Quiz' or '!' or 'Problem'
+				    	else {
 				    		// count the number of lines being written to the file
 				    		w1++;
 				    		w2++;
 				    		String q = "Question #"+qNum;
-				    		// write the line and start a new one
+				    			// write the line and start a new one. Add whitespace
+			    				writer.newLine();
 				    			writer.write(q);
 				    			writer.newLine();
+				    			writer.newLine();
+				    			
+				    			awriter.newLine();
 					    		awriter.write(q);
 					    		awriter.newLine();
-					    	qNum++;
+				    			awriter.newLine();
+				    			
+				    			qNum++;
 				    	}
 			    	}
 			    }
+			    awriter.close();
 			    writer.close();			// files, io streams, and buffers must be closed
+			    
+			    qNum--;
+			    System.out.println(qNum+ " questions were written in "+w1+ " lines. ");
+			    System.out.println(qNum+ " answers were written in "+w2+" lines. ");
+			    
 			  } catch (Exception e) {
 			      throw new RuntimeException(e);	// I/O create exceptions that Java requires us to catch. 
 			  } finally {							// These will display to the user if something fails during runtime.
@@ -149,6 +157,14 @@ public class Run {
 		            // Ignores issues during closing
 		          }
 			  }
+			    if (ansfile != null) {
+			        try {
+			            outfile.close();
+			          } catch (IOException e) {
+			            // Ignores issues during closing
+			          }
+				  }
+			    
 			  }
 	}
 
