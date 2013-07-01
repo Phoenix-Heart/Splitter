@@ -15,7 +15,6 @@
 
 import java.awt.Panel;
 import java.io.*;
-import java.util.Scanner;
 import javax.swing.JFileChooser;
 
 // As a natively OOP language, everything that executes must run inside of a class
@@ -37,15 +36,13 @@ public class Run {
 		int returnVal = fc.showOpenDialog(new Panel()); // We create a basic panel to build our dialog on top of. This is the only element in our panel but panels can hold more than one thing.
 
 		File file;
+		filename = "";
 		if (returnVal == JFileChooser.APPROVE_OPTION) {		// this allows the code to only run if the user selects and accepts a file.
 		    file = fc.getSelectedFile();
 		    												//Now you have your file to do whatever you want to do
 		    filename = file.getAbsolutePath();				
 		} else {
-			System.out.println("File selector failed.");	// Java's method to print to the command line
-			System.out.println("Enter filename");
-			Scanner in = new Scanner(System.in);			// reads from the command line, in case the user fails to select a file.
-			filename = in.next();							// read and save the next string, does not allow whitespace.
+			System.exit(0);
 		}
 		return filename;
 		
@@ -118,6 +115,8 @@ public class Run {
 				    		w1++;
 				    		w2++;
 				    		String q = "Question #"+qNum;
+				    		String s = "Solution #"+qNum;
+				    		
 				    			// write the line and start a new one. Add whitespace
 			    				writer.newLine();
 				    			writer.write(q);
@@ -125,7 +124,7 @@ public class Run {
 				    			writer.newLine();
 				    			
 				    			awriter.newLine();
-					    		awriter.write(q);
+					    		awriter.write(s);
 					    		awriter.newLine();
 				    			awriter.newLine();
 				    			
