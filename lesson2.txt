@@ -1,0 +1,170 @@
+Quiz #7 
+
+# Define a procedure, square, that takes one number 
+# as its input, and returns the square of that 
+# number (result of multiplying
+# the number by itself).
+
+
+def square(x):
+    return x*x
+
+
+Quiz #8
+
+# Define a procedure, sum3, that takes three
+# inputs, and returns the sum of the three
+# input numbers.
+
+def sum3(x,y,z):
+    return x+y+z
+	
+Quiz #9
+
+# Define a procedure, abbaize, that takes
+# two strings as its inputs, and returns
+# a string that is the first input,
+# followed by two repetitions of the second input,
+# followed by the first input.
+
+
+def abbaize(a, b):
+    return a+b+b+a
+	
+
+Quiz #10
+	
+# Define a procedure, find_second, that takes
+# two strings as its inputs: a search string
+# and a target string. It should return a
+# number that is the position of the second
+# occurrence of the target string in the
+# search string.
+
+
+def find_second(s,sub):
+    i= s.find(sub)
+    i = i+1
+    return s.find(sub, i)
+	
+	
+Quiz #12
+
+# Define a procedure, bigger, that takes in
+# two numbers as inputs, and returns the
+# greater of the two inputs.
+
+
+def bigger(x,y):
+    if x>y:
+        return x
+    return y
+	
+Quiz #13
+
+
+# Define a procedure, is_friend, that
+# takes a string as its input, and
+# returns a Boolean indicating if
+# the input string is the name of
+# a friend. Assume I am friends with
+# everyone whose name starts with D
+# and no one else. You do not need to
+# check for the lower case 'd'
+
+
+def is_friend(x):
+    if x[0]=='D':
+        return True
+    else:
+        return False
+		
+Quiz #14
+
+# Define a procedure, is_friend, that takes
+# a string as its input, and returns a
+# Boolean indicating if the input string
+# is the name of a friend. Assume
+# I am friends with everyone whose name
+# starts with either 'D' or 'N', but no one
+# else. You do not need to check for
+# lower case 'd' or 'n'
+
+def is_friend(s):
+    if s[0]=='D':
+        return True
+    else:
+        if s[0]=='N':
+            return True
+        else:
+            return False
+			
+			
+Quiz #15
+
+# Define a procedure, biggest, that takes three
+# numbers as inputs and returns the largest of
+# those three numbers.
+
+def biggest(a,b,c):
+    if a>b:
+        if a>c:
+            return a
+    else:
+        if b>c:
+            return b
+    return c
+	
+Quiz #18
+
+# Define a procedure, print_numbers, that takes
+# as input a positive whole number, and prints 
+# out all the whole numbers from 1 to the input
+# number.
+
+# Make sure your procedure prints "upwards", so
+# from 1 up to the input number.
+
+def print_numbers(n):
+    if n>1:
+        print_numbers(n-1)
+        print n
+    else:
+        print n
+	
+Quiz #19
+	
+# Define a procedure, factorial, that
+# takes one number as its input
+# and returns the factorial of
+# that number.
+
+def factorial(n):
+    if n==0:
+        return 1
+    else:
+        return factorial(n-1)*n
+		
+Quiz #22
+
+# Modify the get_next_target procedure so that
+# if there is a link it behaves as before, but
+# if there is no link tag in the input string,
+# it returns None, 0.
+
+# Note that None is not a string and so should
+# not be enclosed in quotes.
+
+# Also note that your answer will appear in
+# parentheses if you print it.
+
+def get_next_target(page):
+    start_link = page.find('<a href=')
+
+    #Insert your code below here
+    if start_link==-1:
+        return None,0
+    start_quote = page.find('"', start_link)
+    end_quote = page.find('"', start_quote + 1)
+    url = page[start_quote + 1:end_quote]
+    return url, end_quote
