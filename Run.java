@@ -55,7 +55,7 @@ public class Run {
 			  
 			  try {
 				  // create new files with similar names to the original file
-				  String outfilename = appendname(filename, "_clean");
+				  String outfilename = appendname(filename, "_qst");
 				  String ansfilename = appendname(filename, "_ans");
 				  
 				  // more IO initialization
@@ -98,14 +98,14 @@ public class Run {
 				    		// count the number of lines being written to the file. ++ is the same as w = w+1 or w += 1
 				    		w1++;
 				    		// write the line and start a new one: exclude the # tag
-				    		writer.write(line.substring(1));
+				    		writer.write("    "+line.substring(1));
 				    		writer.newLine();
 				    	}	// write to the answer key if the line has none of the tags to indicate a new problem
 				    	else if(line.charAt(0)!='!'&&!line.startsWith("Quiz")&&!line.startsWith("Problem")) {
 				    		// count the number of lines being written to the file
 				    		w2++;
 				    		// write the line and start a new one
-				    		awriter.write(line);
+				    		awriter.write("    "+line);
 				    		awriter.newLine();
 				    	}	// write the answers
 				    	
