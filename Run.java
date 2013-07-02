@@ -80,7 +80,17 @@ public class Run {
 			    String line = "";
 			    int w1 = 0,w2 = 0;
 			    int qNum = 1;
-			    
+	    		String q = "Question #"+qNum;
+	    		String s = "Solution #"+qNum;
+				writer.newLine();
+    			writer.write(q);
+    			writer.newLine();
+    			writer.newLine();
+    			
+    			awriter.newLine();
+	    		awriter.write(s);
+	    		awriter.newLine();
+    			awriter.newLine();
 			    // read in one line at a time until we reach the end of the file
 			    while ((line = reader.readLine()) != null) {
 			    	
@@ -112,11 +122,11 @@ public class Run {
 				    	//recognize a new question if the line starts with 'Quiz' or '!' or 'Problem'
 				    	else {
 				    		// count the number of lines being written to the file
+				    		q = "Question #"+qNum;
+				    		s = "Solution #"+qNum;
 				    		w1++;
 				    		w2++;
-				    		String q = "Question #"+qNum;
-				    		String s = "Solution #"+qNum;
-				    		
+				    		qNum++;
 				    			// write the line and start a new one. Add whitespace
 			    				writer.newLine();
 				    			writer.write(q);
@@ -128,14 +138,13 @@ public class Run {
 					    		awriter.newLine();
 				    			awriter.newLine();
 				    			
-				    			qNum++;
 				    	}
 			    	}
 			    }
 			    awriter.close();
 			    writer.close();			// files, io streams, and buffers must be closed
 			    
-			    qNum--;
+
 			    System.out.println(qNum+ " questions were written in "+w1+ " lines. ");
 			    System.out.println(qNum+ " answers were written in "+w2+" lines. ");
 			    
